@@ -1,14 +1,14 @@
-import time
-import pickle
-import re
-import os
-from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
- 
+from selenium.webdriver.support.ui import WebDriverWait 
+from selenium.webdriver.common.by import By
+from selenium import webdriver
+from bs4 import BeautifulSoup
+import time
+import os
+import re
+
+
 def init_driver():
     driver = webdriver.Firefox(executable_path='./geckodriver')
     driver.wait = WebDriverWait(driver, 5)
@@ -46,7 +46,5 @@ if __name__ == "__main__":
     while True:
 	    lookup(driver, "Selenium")
 	    data.append(scrape(driver.page_source))
-
-	    pickle.dump(data, open('boekentop60.p', 'wb'))
 	    time.sleep(2)
     driver.quit()
